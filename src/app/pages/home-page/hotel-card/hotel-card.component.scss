@@ -1,0 +1,17 @@
+.hotel-card-container {
+  .hotel-card {
+    height: 150px;
+    min-width: 150px;
+    background: white;
+    padding: 20px;
+    margin: 20px 10px;
+    overflow-y: auto;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .active-hotel {
+    background-color: red;
+    height: 180px;
+    min-width: 180px;
+  }
+}

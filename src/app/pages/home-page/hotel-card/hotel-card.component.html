@@ -1,0 +1,15 @@
+<main class="hotel-card-container">
+  <div
+    class="hotel-card"
+    [ngClass]="{ 'active-hotel': isActive }"
+    (click)="makeHotelActive()"
+  >
+    <h3>
+      {{ hotel.title }}
+    </h3>
+    <div>
+      {{ hotel.address.label }}
+    </div>
+    <button>Book</button>
+  </div>
+</main>

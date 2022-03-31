@@ -1,1 +1,17 @@
-Show us what you are able to do!
+<!-- <div id="map"></div> -->
+<app-header></app-header>
+<div #map style="width: 100%; height: 100%"></div>
+
+<!-- Hotel info horizontal list -->
+<section class="card-container">
+  <div *ngFor="let hotel of hotelList; let i = index">
+    <div #hotel>
+      <app-hotel-card
+        [hotel]="hotel"
+        [hotelIndex]="i"
+        [isActive]="isHotelActive(i)"
+        (cardClicked)="makeHotelActive($event)"
+      ></app-hotel-card>
+    </div>
+  </div>
+</section>

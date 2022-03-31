@@ -10,11 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HotelCardComponent } from './pages/home-page/hotel-card/hotel-card.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    HotelCardComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
