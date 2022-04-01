@@ -15,6 +15,19 @@ export class HotelCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get imgSrc() {
+    return `https://picsum.photos/90/145?random=${this.hotelIndex}`;
+  }
+
+  get distanceText() {
+    return ' KM FAR FROM THE LOCATION';
+  }
+
+  get hotelAddress() {
+    const { street, postalCode, city, countryName } = this.hotel.address;
+    return `${street}, ${postalCode} ${city}, ${countryName}`;
+  }
+
   makeHotelActive() {
     this.cardClicked.emit(this.hotelIndex);
   }
