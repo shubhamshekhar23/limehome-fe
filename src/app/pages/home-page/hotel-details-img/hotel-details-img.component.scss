@@ -1,0 +1,30 @@
+@mixin vertical-line-text-truncate($val) {
+  display: -webkit-box;
+  -webkit-line-clamp: $val;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hotel-details-section {
+  display: flex;
+  gap: 15px;
+  .hotel-title {
+    font-weight: bold;
+    @include vertical-line-text-truncate(2);
+  }
+  .details-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    .hotel-details {
+      font-size: 14px;
+      color: grey;
+      @include vertical-line-text-truncate(3);
+    }
+    .hotel-distance {
+      margin-top: 15px;
+      font-size: 12px;
+      color: grey;
+      font-weight: bold;
+    }
+  }
+}

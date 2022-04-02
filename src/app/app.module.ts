@@ -12,6 +12,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelCardComponent } from './pages/home-page/hotel-card/hotel-card.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { DialogComponent } from './shared/components/dialog/dialog.component';
+import { HotelBookingFormComponent } from './pages/home-page/hotel-booking-form/hotel-booking-form.component';
+import { HotelDetailsImgComponent } from './pages/home-page/hotel-details-img/hotel-details-img.component';
+import { ButtonComponent } from './shared/components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
     HomePageComponent,
     HotelCardComponent,
     HeaderComponent,
+    DialogComponent,
+    HotelBookingFormComponent,
+    HotelDetailsImgComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

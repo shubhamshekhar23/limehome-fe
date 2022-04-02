@@ -10,22 +10,14 @@ export class HotelCardComponent implements OnInit {
   @Input() hotelIndex: number;
   @Input() isActive: boolean;
   @Output() cardClicked = new EventEmitter<number>();
+  @Output() bookHotel = new EventEmitter<any>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  get imgSrc() {
-    return `https://picsum.photos/90/145?random=${this.hotelIndex}`;
-  }
-
-  get distanceText() {
-    return ' KM FAR FROM THE LOCATION';
-  }
-
-  get hotelAddress() {
-    const { street, postalCode, city, countryName } = this.hotel.address;
-    return `${street}, ${postalCode} ${city}, ${countryName}`;
+  openBookingDIalog() {
+    this.bookHotel.emit(this.hotel);
   }
 
   makeHotelActive() {

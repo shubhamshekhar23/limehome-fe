@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {} from 'googlemaps';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 declare var google: any;
 
 import { mockItems } from '../../shared/mockdata/hotels.mock.data';
-// import home from "../../../assets/home-icon.svg";
 
 @Component({
   selector: 'app-home-page',
@@ -22,6 +22,7 @@ export class HomePageComponent implements OnInit {
   map: google.maps.Map;
 
   @ViewChildren('hotel') hotelCardELemList: QueryList<ElementRef>;
+  @ViewChild('book_dialog') book_dialogRef: DialogComponent;
 
   addressRestMarker: any;
   centerPosition: any = {
@@ -35,9 +36,16 @@ export class HomePageComponent implements OnInit {
 
   markerList: any = [];
 
+  bookHotelSrc: any = null;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  openBookingDIalog(hotel: any) {
+    this.bookHotelSrc = hotel;
+    this.book_dialogRef.open();
+  }
 
   isHotelActive(index: number) {
     return this.selectedHotelIndex === index;

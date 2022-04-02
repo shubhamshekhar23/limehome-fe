@@ -4,20 +4,10 @@
     [ngClass]="{ 'active-hotel': isActive }"
     (click)="makeHotelActive()"
   >
-    <section class="hotel-details-section">
-      <img src="{{ imgSrc }}" alt="property photo" />
-      <section class="details-section">
-        <div class="hotel-title">
-          {{ hotel.title }}
-        </div>
-        <div class="hotel-details">
-          {{ hotelAddress }}
-        </div>
-        <div class="hotel-distance">
-          {{ hotel.distance + distanceText }}
-        </div>
-      </section>
-    </section>
-    <button class="book-btn">Book</button>
+    <app-hotel-details-img [hotel]="hotel"></app-hotel-details-img>
+    <app-button
+      (btnClicked)="openBookingDIalog()"
+      [label]="'Book'"
+    ></app-button>
   </div>
 </main>

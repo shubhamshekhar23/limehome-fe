@@ -1,0 +1,25 @@
+.hotel-booking-form-container {
+  overflow: auto;
+  section {
+    margin: 15px 0px;
+    .label-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .label-input-val-error {
+        width: 65%;
+        input {
+          width: -webkit-fill-available;
+          height: 25px;
+        }
+        .invalid-error {
+          color: red;
+          font-size: 12px;
+          &::before {
+            content: "*";
+          }
+        }
+      }
+    }
+  }
+}
