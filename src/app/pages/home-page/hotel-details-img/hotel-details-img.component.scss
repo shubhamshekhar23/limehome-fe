@@ -1,9 +1,5 @@
-@mixin vertical-line-text-truncate($val) {
-  display: -webkit-box;
-  -webkit-line-clamp: $val;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+@import "../../../shared/styles/ui.scss";
+
 .hotel-details-section {
   display: flex;
   gap: 15px;

@@ -1,6 +1,8 @@
+@import "../../styles/ui.scss";
+
 .header-container {
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #f7f1e9;
+  background-color: $color-main;
 }

@@ -1,3 +1,5 @@
+@import "../../../shared/styles/ui.scss";
+
 .hotel-card-container {
   .hotel-card {
     height: 200px;
@@ -13,7 +15,7 @@
     box-shadow: 0 0 10px rgb(0 0 0);
   }
   .active-hotel {
-    background-color: #c9cca7;
+    background-color: $color-main-2;
     min-width: 250px;
   }
 }
