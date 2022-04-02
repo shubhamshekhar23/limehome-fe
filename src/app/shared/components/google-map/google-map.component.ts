@@ -49,11 +49,13 @@ export class GoogleMapComponent implements OnInit {
 
   addListenerForHotelCardSelection() {
     this.hotelService.listenToHotelSelection().subscribe((index: any) => {
-      this._makeMarkerActiveAndOtherInactive(
-        this.markerList[index],
-        this.hotelService.selectedHotelIndex
-      );
-      this.hotelService.selectedHotelIndex = index;
+      if (index !== this.hotelService.selectedHotelIndex) {
+        this._makeMarkerActiveAndOtherInactive(
+          this.markerList[index],
+          this.hotelService.selectedHotelIndex
+        );
+        this.hotelService.selectedHotelIndex = index;
+      }
     });
   }
 

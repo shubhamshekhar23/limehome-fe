@@ -1,11 +1,13 @@
-<!-- <div id="map"></div> -->
+<!-- Header -->
 <app-header></app-header>
-<!-- <div #map style="width: 100%; height: 100%"></div> -->
+
+<!-- Google Map -->
 <app-google-map
   (markerClicked)="_handleScrollOfHotelCardIntoView($event)"
 ></app-google-map>
+
 <!-- Hotel info horizontal list -->
-<section class="card-container">
+<section class="card-container" (scroll)="onScroll($event)">
   <div *ngFor="let hotel of hotelService.hotels; let i = index">
     <div #hotel>
       <app-hotel-card
@@ -18,6 +20,7 @@
     </div>
   </div>
 </section>
+
 <!-- Hotel Booking Dialog -->
 <app-dialog #book_dialog>
   <app-hotel-booking-form
