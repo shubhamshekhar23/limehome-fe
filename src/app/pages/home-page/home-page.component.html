@@ -1,9 +1,12 @@
 <!-- <div id="map"></div> -->
 <app-header></app-header>
-<div #map style="width: 100%; height: 100%"></div>
+<!-- <div #map style="width: 100%; height: 100%"></div> -->
+<app-google-map
+  (markerClicked)="_handleScrollOfHotelCardIntoView($event)"
+></app-google-map>
 <!-- Hotel info horizontal list -->
 <section class="card-container">
-  <div *ngFor="let hotel of hotelList; let i = index">
+  <div *ngFor="let hotel of hotelService.hotels; let i = index">
     <div #hotel>
       <app-hotel-card
         [hotel]="hotel"

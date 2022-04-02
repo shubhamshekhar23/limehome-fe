@@ -17,6 +17,7 @@ import { HotelBookingFormComponent } from './pages/home-page/hotel-booking-form/
 import { HotelDetailsImgComponent } from './pages/home-page/hotel-details-img/hotel-details-img.component';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { HotelBookingSuccessComponent } from './pages/home-page/hotel-booking-success/hotel-booking-success.component';
+import { GoogleMapComponent } from './shared/components/google-map/google-map.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HotelBookingSuccessComponent } from './pages/home-page/hotel-booking-su
     HotelDetailsImgComponent,
     ButtonComponent,
     HotelBookingSuccessComponent,
+    GoogleMapComponent,
   ],
   imports: [
     BrowserModule,
