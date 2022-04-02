@@ -15,6 +15,14 @@
     </div>
   </div>
 </section>
+<!-- Hotel Booking Dialog -->
 <app-dialog #book_dialog>
-  <app-hotel-booking-form [hotel]="bookHotelSrc"></app-hotel-booking-form>
+  <app-hotel-booking-form
+    [hotel]="bookHotelSrc"
+    (requestBooking)="doRequestBooking()"
+    *ngIf="!isBookingConfirmed"
+  ></app-hotel-booking-form>
+  <app-hotel-booking-success
+    *ngIf="isBookingConfirmed"
+  ></app-hotel-booking-success>
 </app-dialog>

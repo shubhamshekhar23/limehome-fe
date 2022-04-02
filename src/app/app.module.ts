@@ -16,6 +16,7 @@ import { DialogComponent } from './shared/components/dialog/dialog.component';
 import { HotelBookingFormComponent } from './pages/home-page/hotel-booking-form/hotel-booking-form.component';
 import { HotelDetailsImgComponent } from './pages/home-page/hotel-details-img/hotel-details-img.component';
 import { ButtonComponent } from './shared/components/button/button.component';
+import { HotelBookingSuccessComponent } from './pages/home-page/hotel-booking-success/hotel-booking-success.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +28,16 @@ import { ButtonComponent } from './shared/components/button/button.component';
     HotelBookingFormComponent,
     HotelDetailsImgComponent,
     ButtonComponent,
+    HotelBookingSuccessComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {} from 'googlemaps';
+import { HotelService } from 'src/app/services/hotel/hotel.service';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 declare var google: any;
 
@@ -37,14 +38,35 @@ export class HomePageComponent implements OnInit {
   markerList: any = [];
 
   bookHotelSrc: any = null;
+  isBookingConfirmed = false;
+  hotelList: any = [];
 
-  constructor() {}
+  constructor(private hotelService: HotelService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._getHotelLists();
+  }
+
+  _getHotelLists() {
+    this.hotelService.getHotelsNearLocation().subscribe(
+      (res: any) => {
+        console.table(res);
+        this.hotelList = res?.items;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   openBookingDIalog(hotel: any) {
+    this.isBookingConfirmed = false;
     this.bookHotelSrc = hotel;
     this.book_dialogRef.open();
+  }
+
+  doRequestBooking() {
+    this.isBookingConfirmed = true;
   }
 
   isHotelActive(index: number) {
@@ -54,10 +76,6 @@ export class HomePageComponent implements OnInit {
   makeHotelActive(index: number) {
     const markerCOrrespondingToHotelClicked = this.markerList[index];
     this._handleDisplayChangeOfIcon(markerCOrrespondingToHotelClicked);
-  }
-
-  get hotelList() {
-    return mockItems;
   }
 
   ngAfterViewInit(): void {

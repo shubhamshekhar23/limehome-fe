@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -13,6 +13,7 @@ import {
 })
 export class HotelBookingFormComponent implements OnInit {
   @Input() hotel: any;
+  @Output() requestBooking = new EventEmitter<any>();
 
   bookingForm = this.fb.group({
     name: ['', Validators.required],
@@ -23,6 +24,10 @@ export class HotelBookingFormComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder) {}
+
+  get titleText() {
+    return 'Book Your Hotel';
+  }
 
   getValue(formName: any) {
     return this.bookingForm.get(formName);
@@ -41,4 +46,19 @@ export class HotelBookingFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  getFormData() {
+    return {
+      name: this.getValue('name')?.value,
+      email: this.getValue('email')?.value,
+      phone: this.getValue('phone')?.value,
+      persons: this.getValue('persons')?.value,
+      checkInDate: this.getValue('checkInDate')?.value,
+    };
+  }
+
+  makeBooking() {
+    console.warn(this.getFormData());
+    this.requestBooking.emit(this.getFormData());
+  }
 }

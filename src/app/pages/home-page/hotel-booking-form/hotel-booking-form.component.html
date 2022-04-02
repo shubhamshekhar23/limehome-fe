@@ -1,96 +1,105 @@
 <main class="hotel-booking-form-container">
-  <h4>Book Your Hotel</h4>
-  <app-hotel-details-img [hotel]="hotel"></app-hotel-details-img>
-  <form [formGroup]="bookingForm" novalidate>
-    <!-- name -->
-    <section>
-      <div class="label-input">
-        <label for="name">Name </label>
-        <div class="label-input-val-error">
-          <input type="text" id="name" name="name" formControlName="name" />
-          <div class="invalid-error" *ngIf="isFormItemInvalid('name')">
-            Name is required
-          </div>
-        </div>
-      </div>
-    </section>
+  <h4>{{ titleText }}</h4>
 
-    <!-- email -->
-    <section>
-      <div class="label-input">
-        <label for="email">Email </label>
-        <div class="label-input-val-error">
-          <input type="text" id="email" name="email" formControlName="email" />
-          <div class="invalid-error" *ngIf="isFormItemInvalid('email')">
-            email is required
-          </div>
-          <div
-            class="invalid-error"
-            [hidden]="!getValue('email')?.errors?.email"
-          >
-            invalid email id
+  <!-- Form details -->
+  <div>
+    <app-hotel-details-img [hotel]="hotel"></app-hotel-details-img>
+    <form [formGroup]="bookingForm" novalidate>
+      <!-- name -->
+      <section>
+        <div class="label-input">
+          <label for="name">Name </label>
+          <div class="label-input-val-error">
+            <input type="text" id="name" name="name" formControlName="name" />
+            <div class="invalid-error" *ngIf="isFormItemInvalid('name')">
+              Name is required
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- phone -->
-    <section>
-      <div class="label-input">
-        <label for="phone">Phone </label>
-        <div class="label-input-val-error">
-          <input
-            type="number"
-            id="phone"
-            name="phone"
-            formControlName="phone"
-          />
-          <div class="invalid-error" *ngIf="isFormItemInvalid('phone')">
-            phone is required
+      <!-- email -->
+      <section>
+        <div class="label-input">
+          <label for="email">Email </label>
+          <div class="label-input-val-error">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              formControlName="email"
+            />
+            <div class="invalid-error" *ngIf="isFormItemInvalid('email')">
+              email is required
+            </div>
+            <div
+              class="invalid-error"
+              [hidden]="!getValue('email')?.errors?.email"
+            >
+              invalid email id
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- persons -->
-    <section>
-      <div class="label-input">
-        <label for="persons">Persons </label>
-        <div class="label-input-val-error">
-          <input
-            type="number"
-            id="persons"
-            name="persons"
-            formControlName="persons"
-          />
-          <div class="invalid-error" *ngIf="isFormItemInvalid('persons')">
-            persons is required
+      <!-- phone -->
+      <section>
+        <div class="label-input">
+          <label for="phone">Phone </label>
+          <div class="label-input-val-error">
+            <input
+              type="number"
+              id="phone"
+              name="phone"
+              formControlName="phone"
+            />
+            <div class="invalid-error" *ngIf="isFormItemInvalid('phone')">
+              phone is required
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- checkInDate -->
-    <section>
-      <div class="label-input">
-        <label for="checkInDate">Check-in </label>
-        <div class="label-input-val-error">
-          <input
-            type="date"
-            id="checkInDate"
-            name="checkInDate"
-            formControlName="checkInDate"
-          />
-          <div class="invalid-error" *ngIf="isFormItemInvalid('checkInDate')">
-            Check-in Date is required
+      <!-- persons -->
+      <section>
+        <div class="label-input">
+          <label for="persons">Persons </label>
+          <div class="label-input-val-error">
+            <input
+              type="number"
+              id="persons"
+              name="persons"
+              formControlName="persons"
+            />
+            <div class="invalid-error" *ngIf="isFormItemInvalid('persons')">
+              persons is required
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </form>
-  <app-button
-    (btnClicked)="('')"
-    [label]="'Request Booking'"
-    [disabled]="!bookingForm.valid"
-  ></app-button>
+      </section>
+
+      <!-- checkInDate -->
+      <section>
+        <div class="label-input">
+          <label for="checkInDate">Check-in </label>
+          <div class="label-input-val-error">
+            <input
+              type="date"
+              id="checkInDate"
+              name="checkInDate"
+              formControlName="checkInDate"
+            />
+            <div class="invalid-error" *ngIf="isFormItemInvalid('checkInDate')">
+              Check-in Date is required
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+    <app-button
+      (btnClicked)="makeBooking()"
+      [label]="'Request Booking'"
+      [disabled]="!bookingForm.valid"
+    ></app-button>
+  </div>
 </main>
