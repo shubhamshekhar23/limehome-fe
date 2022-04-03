@@ -8,9 +8,8 @@ describe('DialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
-    })
-    .compileComponents();
+      declarations: [DialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,31 @@ describe('DialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('open should work', () => {
+    component.modalRef = {
+      nativeElement: {
+        style: {
+          display: 'none',
+        },
+      },
+    };
+    component.open();
+
+    expect(component.modalRef.nativeElement.style.display).toEqual('flex');
+  });
+
+  it('close should work', () => {
+    component.modalRef = {
+      nativeElement: {
+        style: {
+          display: 'flex',
+        },
+      },
+    };
+    component.close();
+
+    expect(component.modalRef.nativeElement.style.display).toEqual('none');
   });
 });
