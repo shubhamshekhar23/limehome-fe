@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {} from 'googlemaps';
+import { HotelApiResponse } from 'src/app/models/hotel.model';
 import { HotelService } from 'src/app/services/hotel/hotel.service';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 
@@ -52,8 +53,7 @@ export class HomePageComponent implements OnInit {
 
   _getHotelLists() {
     this.hotelService.getHotelsNearLocation().subscribe(
-      (res: any) => {
-        console.table(res);
+      (res: HotelApiResponse) => {
         this.hotelService.hotels = res?.items;
       },
       (err) => {

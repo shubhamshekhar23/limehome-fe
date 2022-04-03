@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Hotel } from 'src/app/models/hotel.model';
 
 @Component({
   selector: 'app-hotel-card',
@@ -6,11 +7,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./hotel-card.component.scss'],
 })
 export class HotelCardComponent implements OnInit {
-  @Input() hotel: any;
+  @Input() hotel: Hotel;
   @Input() hotelIndex: number;
   @Input() isActive: boolean;
   @Output() cardClicked = new EventEmitter<number>();
-  @Output() bookHotel = new EventEmitter<any>();
+  @Output() bookHotel = new EventEmitter<Hotel>();
 
   constructor() {}
 

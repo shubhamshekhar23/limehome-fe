@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { BookingForm, Hotel } from 'src/app/models/hotel.model';
 
 @Component({
   selector: 'app-hotel-booking-form',
@@ -12,8 +8,8 @@ import {
   styleUrls: ['./hotel-booking-form.component.scss'],
 })
 export class HotelBookingFormComponent implements OnInit {
-  @Input() hotel: any;
-  @Output() requestBooking = new EventEmitter<any>();
+  @Input() hotel: Hotel;
+  @Output() requestBooking = new EventEmitter<BookingForm>();
 
   bookingForm = this.fb.group({
     name: ['', Validators.required],
@@ -47,7 +43,7 @@ export class HotelBookingFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getFormData() {
+  getFormData(): BookingForm {
     return {
       name: this.getValue('name')?.value,
       email: this.getValue('email')?.value,

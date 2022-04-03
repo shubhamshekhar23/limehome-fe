@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HotelApiResponse, Hotel } from 'src/app/models/hotel.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HotelService {
-  _hotels: any = [];
-  selectedHotelIndex: any = 0;
+  _hotels: Hotel[] = [];
+  selectedHotelIndex: number = 0;
   hotelDataFetched = new Subject();
   hotelSelectedByCard = new Subject();
   constructor(private _httpClient: HttpClient) {}
@@ -22,7 +23,9 @@ export class HotelService {
   }
 
   getHotelsNearLocation() {
-    return this._httpClient.get(`/hotels`);
+    return this._httpClient.get<HotelApiResponse>(
+      `/hotels`
+    ) as Observable<HotelApiResponse>;
   }
 
   listenToHotelDataFetched() {

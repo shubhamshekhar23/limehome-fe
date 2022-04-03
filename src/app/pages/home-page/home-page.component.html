@@ -7,7 +7,11 @@
 ></app-google-map>
 
 <!-- Hotel info horizontal list -->
-<section class="card-container" (scroll)="onScroll($event)">
+<section
+  class="card-container"
+  (scroll)="onScroll($event)"
+  *ngIf="hotelService.hotels.length !== 0"
+>
   <div *ngFor="let hotel of hotelService.hotels; let i = index">
     <div #hotel>
       <app-hotel-card

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Hotel } from 'src/app/models/hotel.model';
 
 @Component({
   selector: 'app-hotel-details-img',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./hotel-details-img.component.scss'],
 })
 export class HotelDetailsImgComponent implements OnInit {
-  @Input() hotel: any;
+  @Input() hotel: Hotel;
 
   constructor() {}
 
