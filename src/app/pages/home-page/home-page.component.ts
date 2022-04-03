@@ -30,21 +30,24 @@ export class HomePageComponent implements OnInit {
 
   onScroll(event: any) {
     const isMobile = window.innerWidth <= 600;
-
     if (isMobile) {
       if (this.scrollTimer != -1) {
         clearTimeout(this.scrollTimer);
       }
       this.scrollTimer = setTimeout(() => {
-        const [MIN_X, MAX_X] = [-305, 150];
-        this.hotelCardELemList.toArray().forEach((element, index) => {
-          let detail = element.nativeElement.getBoundingClientRect();
-          if (detail.x < MAX_X && detail.x > MIN_X) {
-            this.makeHotelActive(index);
-          }
-        });
+        this.checkAndDoTheCardSelection();
       }, 200);
     }
+  }
+
+  checkAndDoTheCardSelection() {
+    const [MIN_X, MAX_X] = [-305, 150];
+    this.hotelCardELemList.toArray().forEach((element, index) => {
+      let detail = element.nativeElement.getBoundingClientRect();
+      if (detail.x < MAX_X && detail.x > MIN_X) {
+        this.makeHotelActive(index);
+      }
+    });
   }
 
   ngOnInit(): void {

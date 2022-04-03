@@ -54,7 +54,6 @@ export class HotelBookingFormComponent implements OnInit {
   }
 
   makeBooking() {
-    console.warn(this.getFormData());
     this.requestBooking.emit(this.getFormData());
   }
 }
