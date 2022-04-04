@@ -74,6 +74,36 @@ describe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('onScroll should work', fakeAsync(() => {
+    spyOnProperty(window, 'innerWidth').and.returnValue(400);
+    let spy1 = spyOn(window, 'clearTimeout');
+    let spy2 = spyOn(component, 'checkAndDoTheCardSelection');
+    component.scrollTimer = {};
+
+    component.onScroll({});
+    tick(300);
+
+    expect(spy1).toHaveBeenCalled();
+    expect(spy2).toHaveBeenCalled();
+  }));
+
+  it('checkAndDoTheCardSelection should work', () => {
+    let targetObj = {
+      nativeElement: {
+        scrollIntoView: () => {},
+        getBoundingClientRect: () => ({ x: 111 }),
+      },
+    };
+    component.hotelCardELemList = {
+      toArray: () => [targetObj],
+    } as any;
+    let spy1 = spyOn(component, 'makeHotelActive');
+
+    component.checkAndDoTheCardSelection();
+
+    expect(spy1).toHaveBeenCalled();
+  });
+
   it('makeHotelActive should work', () => {
     component.hotelService.hotelSelectedByCard = new Subject();
     let spy1 = spyOn(component.hotelService.hotelSelectedByCard, 'next');
